@@ -64,8 +64,7 @@ router.get("/tasks", authenticate, async (req, res) => {
 router.get("/tasks/:id", authenticate, async (req, res) => {
     const _id = req.params.id
 
-    // console.log("ID: " +_id)
-    // console.log("AuthorID: " + req.user._id)
+    
 
     try{
         const task = await Task.findOne({_id, author: req.user._id})

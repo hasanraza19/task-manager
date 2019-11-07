@@ -42,7 +42,7 @@ router.post("/users/logout", authenticate, async(req,res)=>{
 
         req.user.tokens = req.user.tokens.filter((token)=>token.token !== req.token)
         await req.user.save()
-        res.send({"groovy happened": "WHAT??"})
+        res.send()
     }
     catch(e){
         res.status(500).send()
@@ -81,21 +81,7 @@ router.get("/users/me", authenticate, async (req, res) => {
 })
 
 
-// router.get("/users/:id", async (req, res) => {
-//     const _id = req.params.id
 
-//     try{
-//         const foundUser = await User.findById({_id})
-//         if(!foundUser){
-//             return res.send()
-//         }
-//         res.send(foundUser)
-//     }
-//     catch(e){
-//         res.send(e)
-//     }
-
-// })
 
 router.patch("/users/me", authenticate, async (req,res)=>{
     const updates = Object.keys(req.body)
